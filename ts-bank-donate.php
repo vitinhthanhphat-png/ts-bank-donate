@@ -30,9 +30,14 @@ foreach ( [
     'includes/class-tsbd-shortcode.php',
     'includes/class-tsbd-frontend.php',
     'includes/class-tsbd-plugin.php',
+    'includes/class-tsbd-github-updater.php',
 ] as $file ) {
     require_once TSBD_DIR . $file;
 }
 
 // Boot
 TSBD_Plugin::instance();
+
+// OTA Update via GitHub
+new TSBD_GitHub_Updater( 'vitinhthanhphat-png', 'ts-bank-donate', TSBD_FILE );
+
