@@ -93,6 +93,32 @@ class TSBD_GitHub_Updater {
 	}
 
 	/**
+	 * Get the download URL from a release.
+	 *
+	 * Prefers an attached .zip asset (has correct folder name inside),
+	 * falls back to GitHub's zipball_url (extracts as repo-branch/).
+	 *
+	 * @param object $release GitHub release object.
+	 * @return string Download URL.
+	 */
+	private function get_download_url( $release ) {
+		// Look for a .zip asset attached to the release
+		if ( ! empty( $release->assets ) && is_array( $release->assets ) ) {
+			foreach ( $release->assets as $asset ) {
+				if (
+					isset( $asset->browser_download_url ) &&
+					str_ends_with( $asset->name ?? '', '.zip' )
+				) {
+					return $asset->browser_download_url;
+				}
+			}
+		}
+
+		// Fallback to zipball (GitHub's auto-generated source ZIP)
+		return $release->zipball_url ?? '';
+	}
+
+	/**
 	 * Filter: inject update data when a newer version exists on GitHub.
 	 *
 	 * @param object $transient WordPress update_plugins transient.
@@ -116,7 +142,7 @@ class TSBD_GitHub_Updater {
 			$update->plugin      = $this->plugin_basename;
 			$update->new_version = $remote_version;
 			$update->url         = $release->html_url ?? '';
-			$update->package     = $release->zipball_url ?? '';
+			$update->package     = $this->get_download_url( $release );
 			$update->icons       = [];
 			$update->banners     = [];
 			$update->tested      = '';
@@ -170,7 +196,7 @@ class TSBD_GitHub_Updater {
 		$info->tested         = '';
 		$info->downloaded     = 0;
 		$info->last_updated   = $release->published_at ?? '';
-		$info->download_link  = $release->zipball_url ?? '';
+		$info->download_link  = $this->get_download_url( $release );
 
 		$info->sections = [
 			'description' => 'Hiển thị hộp donate với QR chuyển khoản ngân hàng (VietQR) và MoMo. Quản lý nhiều tài khoản, tự sinh ảnh QR lưu vào Media Library.',
