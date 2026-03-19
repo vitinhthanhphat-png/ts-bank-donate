@@ -30,48 +30,9 @@ if (-not $Version) {
 
 Write-Host "Building release v$Version for $PluginSlug..." -ForegroundColor Cyan
 
-# Prepare temp directory
-$TempRoot = Join-Path $env:TEMP "tsbd_build_$(Get-Random)"
-$TempPlugin = Join-Path $TempRoot $PluginSlug
-$ZipName  = "$PluginSlug-v$Version.zip"
-$ZipPath  = Join-Path $PluginDir $ZipName
-
-# Clean previous build
-if (Test-Path $ZipPath) { Remove-Item $ZipPath -Force }
-if (Test-Path $TempRoot) { Remove-Item $TempRoot -Recurse -Force }
-
-# Copy plugin files (exclude dev/git files)
-New-Item -ItemType Directory -Path $TempPlugin -Force | Out-Null
-
-$excludeDirs = @(".git", "Yeu Cau", "node_modules", ".idea", ".vscode")
-$excludeFiles = @(".gitignore", "REQUIREMENTS.md", "build-release.ps1", "*.log", "*.bak")
-
-# Copy directories
-Get-ChildItem $PluginDir -Directory | Where-Object {
-    $excludeDirs -notcontains $_.Name
-} | ForEach-Object {
-    Copy-Item $_.FullName -Destination (Join-Path $TempPlugin $_.Name) -Recurse
-}
-
-# Copy files (excluding dev files and the ZIP itself)
-Get-ChildItem $PluginDir -File | Where-Object {
-    $name = $_.Name
-    $excluded = $false
-    foreach ($pattern in $excludeFiles) {
-        if ($name -like $pattern) { $excluded = $true; break }
-    }
-    if ($name -like "*.zip") { $excluded = $true }
-    -not $excluded
-} | ForEach-Object {
-    Copy-Item $_.FullName -Destination (Join-Path $TempPlugin $_.Name)
-}
-
-# Create ZIP
-Write-Host "Creating $ZipName..." -ForegroundColor Yellow
-Compress-Archive -Path $TempPlugin -DestinationPath $ZipPath -Force
-
-# Cleanup temp
-Remove-Item $TempRoot -Recurse -Force
+# Create ZIP using git archive (ensures forward-slashes for cross-platform extraction)
+Write-Host "Creating $ZipName with git archive..." -ForegroundColor Yellow
+git archive --format zip --output $ZipPath --prefix "$PluginSlug/" HEAD
 
 $zipSize = [math]::Round((Get-Item $ZipPath).Length / 1KB, 1)
 Write-Host "ZIP created: $ZipPath ($zipSize KB)" -ForegroundColor Green
