@@ -31,6 +31,11 @@
 1. **Plugins → Add New → Upload Plugin**
 2. Upload file `.zip` → **Install Now → Activate**
 
+### Cập nhật tự động (OTA Update)
+Plugin hỗ trợ cập nhật tự động trực tiếp từ GitHub. Khi có phiên bản mới:
+1. Sẽ có thông báo update trong **Dashboard → Updates** và trang **Plugins**.
+2. Chỉ cần bấm **Update Now** là plugin sẽ tự động tải và cài đặt phiên bản mới nhất.
+
 ## 📖 Sử dụng
 
 ### Thêm tài khoản
@@ -104,6 +109,16 @@ ts_bank_donate/
 - Kết nối internet (để gọi API VietQR.io lấy danh sách ngân hàng & tạo QR)
 
 ## 📝 Changelog
+
+### v1.3.2
+- ✅ Sử dụng `git archive` để đóng gói release ZIP, fix lỗi "Plugin file does not exist" khi upload lên host Linux
+- ✅ Tối ưu hoá OTA Updater
+
+### v1.3.1
+- ✅ Fix lỗi cập nhật OTA bị mất file do sai tên thư mục sau khi giải nén
+
+### v1.3.0
+- ✅ Thêm tính năng **Tự động Cập nhật (OTA Update)** qua GitHub
 
 ### v1.2.1 (2026-03-19)
 - ✅ Fix admin template preview — rebuild HTML khớp frontend
