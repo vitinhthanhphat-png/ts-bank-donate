@@ -1,76 +1,185 @@
 /* TS Bank Donate — Minimal Template
-   Layout: Same vertical stack as Modern (base CSS handles layout).
-   This template only overrides visual styling to be cleaner/lighter.
+   ── Swiss Design / Neo-Minimalism ──
+   Maximum whitespace, typographic hierarchy, no visual noise.
+   Personality: Clean, elegant, intentional — inspired by Stripe/Linear.
 */
 
-/* Lighter background */
+/* Ultra-clean background */
 .tsbd-template-minimal .tsbd-panel-content {
-    background: #f9fafb;
-    gap: 10px;
+    background: #FAFBFC;
+    gap: 14px;
+    padding: 20px;
 }
 
-/* Hide bank avatar — show bank name text only */
+/* Soft monochrome avatar */
 .tsbd-template-minimal .tsbd-bank-avatar {
-    width: 36px;
-    height: 36px;
-    background: transparent;
-    border: 1.5px solid #e5e7eb;
-    color: var(--tsbd-muted);
-    font-size: 0.72rem;
-    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    color: #475569;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: none;
+}
+.tsbd-template-minimal .tsbd-bank-avatar.is-momo {
+    background: #FDF2F8;
+    border-color: #FBCFE8;
+    color: #BE185D;
+    box-shadow: none;
 }
 .tsbd-template-minimal .tsbd-bank-name {
     font-size: 0.85rem;
-    color: var(--tsbd-text);
+    font-weight: 600;
+    color: #0F172A;
+    letter-spacing: -0.3px;
 }
 .tsbd-template-minimal .tsbd-bank-sub {
     font-size: 0.7rem;
+    color: #94A3B8;
 }
 
-/* QR: smaller, no heavy shadow */
+/* QR: borderless, floating in whitespace */
 .tsbd-template-minimal .tsbd-qr-card {
     background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
+    border: 1px solid #F1F5F9;
+    border-radius: 16px;
     box-shadow: none;
-    padding: 12px 12px 10px;
+    padding: 16px 16px 12px;
 }
 .tsbd-template-minimal .tsbd-qr-img {
     width: 160px;
+    opacity: .95;
+}
+.tsbd-template-minimal .tsbd-qr-hint {
+    font-size: 0.68rem;
+    color: #C1C9D6;
 }
 
-/* Info rows: flat, no card style */
+/* Info rows: ultra-clean dividers */
+.tsbd-template-minimal .tsbd-info-rows {
+    gap: 0;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #F1F5F9;
+    overflow: hidden;
+}
 .tsbd-template-minimal .tsbd-info-row {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #F1F5F9;
     border-radius: 0;
-    padding: 8px 0;
+    padding: 11px 14px;
+    transition: background .15s;
 }
 .tsbd-template-minimal .tsbd-info-row:last-of-type {
     border-bottom: none;
 }
+.tsbd-template-minimal .tsbd-info-row:hover {
+    background: #F8FAFC;
+    box-shadow: none;
+}
+.tsbd-template-minimal .tsbd-info-label {
+    font-size: 0.68rem;
+    color: #94A3B8;
+    text-transform: none;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+.tsbd-template-minimal .tsbd-info-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0F172A;
+    font-variant-numeric: tabular-nums;
+}
 .tsbd-template-minimal .tsbd-info-action {
     background: transparent;
-    color: var(--tsbd-muted);
+    color: #94A3B8;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
 }
 .tsbd-template-minimal .tsbd-info-action:hover {
-    background: #f0f0f0;
+    background: #F1F5F9;
+    color: #475569;
 }
 
-/* CTA: outline style */
+/* CTA: ghost button → fills on hover */
 .tsbd-template-minimal .tsbd-copy-btn {
     background: transparent;
-    border: 1.5px solid var(--tsbd-primary);
-    color: var(--tsbd-primary);
+    border: 1.5px solid #0F172A;
+    color: #0F172A;
     box-shadow: none;
-    height: 44px;
+    height: 46px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    transition: all .25s cubic-bezier(.4,0,.2,1);
 }
+.tsbd-template-minimal .tsbd-copy-btn::after { display: none; }
 .tsbd-template-minimal .tsbd-copy-btn:hover {
-    background: var(--tsbd-primary);
+    background: #0F172A;
+    color: #fff;
+    border-color: #0F172A;
+    opacity: 1;
+}
+.tsbd-template-minimal .tsbd-copy-btn.is-copied {
+    background: #10B981;
+    border-color: #10B981;
     color: #fff;
 }
+
+/* MoMo: outlined pink */
 .tsbd-template-minimal .tsbd-momo-open-btn {
-    height: 44px;
+    height: 46px;
     box-shadow: none;
+    border-radius: 12px;
+    background: transparent;
+    border: 1.5px solid #A50064;
+    color: #A50064;
+    font-weight: 600;
+}
+.tsbd-template-minimal .tsbd-momo-open-btn::after { display: none; }
+.tsbd-template-minimal .tsbd-momo-open-btn:hover {
+    background: #A50064;
+    color: #fff;
+    opacity: 1;
+}
+
+/* Amount buttons: monochrome chips */
+.tsbd-template-minimal .tsbd-amount-btn {
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.78rem;
+    height: 38px;
+    color: #475569;
+}
+.tsbd-template-minimal .tsbd-amount-btn:hover {
+    border-color: #0F172A;
+    color: #0F172A;
+    background: transparent;
+}
+.tsbd-template-minimal .tsbd-amount-btn.is-active {
+    border-color: #0F172A;
+    background: #0F172A;
+    color: #fff;
+}
+
+/* Input: clean underline feel */
+.tsbd-template-minimal .tsbd-input {
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+}
+.tsbd-template-minimal .tsbd-input:focus {
+    border-color: #0F172A;
+    box-shadow: 0 0 0 2px rgba(15,23,42,.06);
+}
+
+/* Footer: whisper-quiet */
+.tsbd-template-minimal .tsbd-footer {
+    background: transparent;
 }

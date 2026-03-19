@@ -144,6 +144,8 @@ class TSBD_Account {
                 $out['phone'] = sanitize_text_field( $data['phone'] );
             if ( isset( $data['account_name'] ) )
                 $out['account_name'] = sanitize_text_field( $data['account_name'] );
+            if ( isset( $data['momo_qr_custom'] ) )
+                $out['momo_qr_custom'] = absint( $data['momo_qr_custom'] );
         }
 
         return $out;

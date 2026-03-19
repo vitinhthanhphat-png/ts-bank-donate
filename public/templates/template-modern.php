@@ -11,7 +11,14 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-$qr_url   = ! empty( $account['attachment_id'] ) ? wp_get_attachment_url( $account['attachment_id'] ) : '';
+// For MoMo: prefer user-uploaded QR over auto-generated
+$qr_url = '';
+if ( ( $account['type'] ?? 'bank' ) === 'momo' && ! empty( $account['momo_qr_custom'] ) ) {
+    $qr_url = wp_get_attachment_url( $account['momo_qr_custom'] );
+}
+if ( ! $qr_url && ! empty( $account['attachment_id'] ) ) {
+    $qr_url = wp_get_attachment_url( $account['attachment_id'] );
+}
 $currency = esc_html( $settings['currency'] ?? 'đ' );
 $type     = $account['type'] ?? 'bank';
 $phone    = $account['phone'] ?? '';

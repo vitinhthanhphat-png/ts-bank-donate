@@ -1,79 +1,242 @@
 /* TS Bank Donate — Glassmorphism Template
-   Layout: Same vertical stack as Modern (base CSS handles layout).
-   This template adds gradient background + frosted glass visual overrides.
+   ── Aurora Glass / Frosted Fintech ──
+   Deep gradient backdrop, frosted panels, luminous accents.
+   Personality: Premium, futuristic, immersive — inspired by Apple + Linear.
 */
 
-/* Gradient background on the panel wrapper (set by shortcode as tsbd-template-glass class) */
+/* Rich gradient backdrop with noise texture */
 .tsbd-template-glass {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 30%, #334155 60%, #1E293B 100%);
+    position: relative;
+}
+.tsbd-template-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(56,189,248,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(139,92,246,.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+.tsbd-template-glass > * {
+    position: relative;
+    z-index: 1;
 }
 
-/* White text for content on dark background */
+/* Header: gradient adapts to dark theme */
+.tsbd-template-glass .tsbd-header {
+    background: linear-gradient(135deg, rgba(56,189,248,.15) 0%, rgba(139,92,246,.15) 100%);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.tsbd-template-glass .tsbd-header::before {
+    background: rgba(56,189,248,.08);
+}
+.tsbd-template-glass .tsbd-header::after {
+    background: rgba(139,92,246,.06);
+}
+
+/* Tabs: frosted bar */
+.tsbd-template-glass .tsbd-tabs {
+    background: rgba(255,255,255,.04);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    padding: 4px 8px 0;
+}
+.tsbd-template-glass .tsbd-tab {
+    color: rgba(255,255,255,.45);
+    border-bottom-color: transparent;
+}
+.tsbd-template-glass .tsbd-tab:hover {
+    color: rgba(255,255,255,.7);
+    background: rgba(255,255,255,.04);
+}
+.tsbd-template-glass .tsbd-tab.is-active {
+    color: #fff;
+    border-bottom-color: #38BDF8;
+    background: rgba(56,189,248,.06);
+}
+
+/* Panel: transparent */
 .tsbd-template-glass .tsbd-panel-content {
     background: transparent;
+    gap: 14px;
 }
 
-/* Bank avatar: frosted */
+/* Bank avatar: frosted with glow */
 .tsbd-template-glass .tsbd-bank-avatar {
-    background: rgba(255,255,255,0.25);
-    border: 1.5px solid rgba(255,255,255,0.45);
-    color: #fff;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.12);
+    color: #E2E8F0;
+    box-shadow: 0 0 20px rgba(56,189,248,.08);
+}
+.tsbd-template-glass .tsbd-bank-avatar.is-momo {
+    background: rgba(165,0,100,.15);
+    border-color: rgba(236,72,153,.2);
+    box-shadow: 0 0 20px rgba(236,72,153,.08);
+    color: #F9A8D4;
 }
 .tsbd-template-glass .tsbd-bank-name {
-    color: #fff;
-    font-weight: 700;
+    color: #F1F5F9;
+    font-weight: 600;
 }
 .tsbd-template-glass .tsbd-bank-sub {
-    color: rgba(255,255,255,0.75);
+    color: rgba(148,163,184,.8);
 }
 
-/* QR card: frosted glass card */
+/* QR card: premium frosted glass panel */
 .tsbd-template-glass .tsbd-qr-card {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(12px) saturate(1.6);
-    -webkit-backdrop-filter: blur(12px) saturate(1.6);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(16px) saturate(1.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 8px 32px rgba(0,0,0,.2);
+    padding: 24px 20px 16px;
+}
+.tsbd-template-glass .tsbd-qr-card:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.15);
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.05) inset,
+        0 12px 48px rgba(0,0,0,.25);
+}
+.tsbd-template-glass .tsbd-qr-img {
+    border-radius: 12px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,.15));
 }
 .tsbd-template-glass .tsbd-qr-hint {
-    color: rgba(255,255,255,0.75);
+    color: rgba(148,163,184,.6);
 }
 
-/* Info rows: frosted card */
+/* Info rows: frosted cards with border glow */
 .tsbd-template-glass .tsbd-info-row {
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border-radius: 14px;
+    transition: all .2s;
+}
+.tsbd-template-glass .tsbd-info-row:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(56,189,248,.2);
+    box-shadow: 0 0 16px rgba(56,189,248,.06);
 }
 .tsbd-template-glass .tsbd-info-label {
-    color: rgba(255,255,255,0.7);
+    color: rgba(148,163,184,.6);
+    font-size: 0.68rem;
 }
 .tsbd-template-glass .tsbd-info-value {
-    color: #fff;
+    color: #F1F5F9;
+    font-weight: 600;
 }
 .tsbd-template-glass .tsbd-info-action {
-    background: rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,.06);
+    color: rgba(148,163,184,.8);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
 }
 .tsbd-template-glass .tsbd-info-action:hover {
-    background: rgba(255,255,255,0.35);
+    background: rgba(56,189,248,.12);
+    color: #38BDF8;
+    border-color: rgba(56,189,248,.2);
 }
 
-/* CTA: frosted button */
+/* Amount buttons: frosted chips */
+.tsbd-template-glass .tsbd-amount-btn {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    color: rgba(226,232,240,.7);
+    border-radius: 10px;
+}
+.tsbd-template-glass .tsbd-amount-btn:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(56,189,248,.25);
+    color: #38BDF8;
+}
+.tsbd-template-glass .tsbd-amount-btn.is-active {
+    background: rgba(56,189,248,.12);
+    border-color: rgba(56,189,248,.35);
+    color: #38BDF8;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(56,189,248,.1);
+}
+
+/* Custom input: dark frosted */
+.tsbd-template-glass .tsbd-input {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    color: #F1F5F9;
+    border-radius: 12px;
+}
+.tsbd-template-glass .tsbd-input:focus {
+    border-color: rgba(56,189,248,.35);
+    box-shadow: 0 0 0 3px rgba(56,189,248,.08);
+    background: rgba(255,255,255,.07);
+}
+.tsbd-template-glass .tsbd-input::placeholder {
+    color: rgba(148,163,184,.4);
+}
+.tsbd-template-glass .tsbd-input-group label {
+    color: rgba(148,163,184,.6);
+}
+.tsbd-template-glass .tsbd-amounts-label {
+    color: rgba(148,163,184,.7);
+}
+
+/* CTA: luminous gradient button */
 .tsbd-template-glass .tsbd-copy-btn {
-    background: rgba(255,255,255,0.25);
-    border: 1.5px solid rgba(255,255,255,0.5);
+    background: linear-gradient(135deg, #38BDF8, #818CF8);
+    border: none;
     color: #fff;
-    box-shadow: none;
-    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 20px rgba(56,189,248,.25);
+    border-radius: 14px;
+    height: 50px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
 }
 .tsbd-template-glass .tsbd-copy-btn:hover {
-    background: rgba(255,255,255,0.4);
+    box-shadow: 0 6px 28px rgba(56,189,248,.35);
     opacity: 1;
 }
+.tsbd-template-glass .tsbd-copy-btn.is-copied {
+    background: linear-gradient(135deg, #34D399, #10B981);
+    box-shadow: 0 4px 20px rgba(16,185,129,.3);
+}
+
+/* MoMo: neon pink glass */
 .tsbd-template-glass .tsbd-momo-open-btn {
-    background: rgba(165,0,100,0.7);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    box-shadow: none;
+    background: linear-gradient(135deg, rgba(236,72,153,.8), rgba(165,0,100,.9));
+    border: 1px solid rgba(236,72,153,.3);
+    box-shadow: 0 4px 20px rgba(236,72,153,.2);
+    border-radius: 14px;
+    height: 50px;
+}
+.tsbd-template-glass .tsbd-momo-open-btn:hover {
+    box-shadow: 0 6px 28px rgba(236,72,153,.3);
+    opacity: 1;
+}
+
+/* Note input: glass */
+.tsbd-template-glass .tsbd-note-inline {
+    color: #F1F5F9;
+}
+.tsbd-template-glass .tsbd-note-inline:focus {
+    color: #38BDF8;
+}
+
+/* Footer */
+.tsbd-template-glass .tsbd-footer {
+    background: transparent;
+}
+.tsbd-template-glass .tsbd-footer small,
+.tsbd-template-glass .tsbd-footer a {
+    color: rgba(148,163,184,.4);
+}
+.tsbd-template-glass .tsbd-footer a:hover {
+    color: rgba(56,189,248,.7);
 }

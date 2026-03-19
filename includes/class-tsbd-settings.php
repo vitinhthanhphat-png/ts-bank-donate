@@ -12,11 +12,13 @@ class TSBD_Settings {
         'allow_note_change'       => true,
         'currency'                => 'đ',
         'default_template'        => 'modern',
-        'primary_color'           => '#2563eb',
-        'bg_color'                => '#ffffff',
-        'text_color'              => '#1f2937',
-        'border_radius'           => 12,
-        'max_width'               => '480px',
+        'primary_color'           => '#3B82F6',
+        'gradient_start'          => '#3B82F6',
+        'gradient_end'            => '#8B5CF6',
+        'bg_color'                => '#F8FAFC',
+        'text_color'              => '#0F172A',
+        'border_radius'           => 16,
+        'max_width'               => '460px',
         'custom_css'              => '',
         'load_google_fonts'       => false,
         'show_footer_credit'      => true,
@@ -77,7 +79,7 @@ class TSBD_Settings {
             $out['default_template'] = in_array( $data['default_template'], [ 'modern', 'minimal', 'glass', 'classic' ], true )
                 ? $data['default_template'] : 'modern';
 
-        foreach ( [ 'primary_color', 'bg_color', 'text_color' ] as $key ) {
+        foreach ( [ 'primary_color', 'gradient_start', 'gradient_end', 'bg_color', 'text_color' ] as $key ) {
             if ( isset( $data[ $key ] ) )
                 $out[ $key ] = sanitize_hex_color( $data[ $key ] ) ?: self::$defaults[ $key ];
         }

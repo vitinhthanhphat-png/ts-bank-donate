@@ -108,8 +108,10 @@ class TSBD_Admin {
         try {
             if ( $account['type'] === 'bank' ) {
                 $generated = TSBD_QR_Generator::generate( $account );
-            } elseif ( $account['type'] === 'momo' ) {
-                $generated = TSBD_Momo_QR::generate( $account );
+            } elseif ( $account['type'] === 'momo' && ! empty( $account['momo_qr_custom'] ) ) {
+                // MoMo: use uploaded QR as the attachment_id (no auto-generation)
+                $account['attachment_id'] = absint( $account['momo_qr_custom'] );
+                $generated = true;
             }
         } catch ( \Throwable $e ) {
             error_log( '[TSBD] QR generation exception: ' . $e->getMessage() );
@@ -156,7 +158,8 @@ class TSBD_Admin {
         if ( $account['type'] === 'bank' ) {
             $generated = TSBD_QR_Generator::generate( $account );
         } elseif ( $account['type'] === 'momo' ) {
-            $generated = TSBD_Momo_QR::generate( $account );
+            // MoMo requires uploaded QR — cannot regenerate
+            wp_send_json_error( 'MoMo QR cần upload từ app MoMo. Không thể tự tạo.' );
         }
 
         if ( $generated ) {

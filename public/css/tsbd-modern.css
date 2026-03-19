@@ -1,18 +1,114 @@
 /* TS Bank Donate — Modern Card Template
-   Layout: Vertical stack from base CSS.
-   This template is the default — minimal overrides needed.
+   ── Scandinavian Fintech ──
+   Clean lines, subtle gradients, elevated card UI with soft depth.
+   Personality: Professional, trustworthy, contemporary banking feel.
 */
 
-/* Large QR image */
+/* Large QR with subtle glow effect */
 .tsbd-template-modern .tsbd-qr-img {
     width: 200px;
+    filter: drop-shadow(0 2px 8px rgba(59,130,246,.08));
 }
 
-/* Underline tab style */
+/* Clean underline tab accent */
 .tsbd-template-modern .tsbd-tab {
     border-radius: 0;
+    font-weight: 500;
+    letter-spacing: -0.1px;
+    padding: 12px 16px 10px;
+    transition: color .2s, border-color .25s, background .2s;
 }
 .tsbd-template-modern .tsbd-tab.is-active {
     background: transparent;
     box-shadow: none;
+    border-bottom-width: 2.5px;
+}
+
+/* Elevated QR card with micro-interaction */
+.tsbd-template-modern .tsbd-qr-card {
+    border-radius: 20px;
+    padding: 24px 24px 16px;
+    border: 1px solid rgba(226,232,240,.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 6px 24px rgba(0,0,0,.03);
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+}
+.tsbd-template-modern .tsbd-qr-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(59,130,246,.1);
+}
+
+/* Info rows with subtle left accent */
+.tsbd-template-modern .tsbd-info-row {
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--tsbd-border);
+    background: #fff;
+    position: relative;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+}
+.tsbd-template-modern .tsbd-info-row:hover {
+    border-color: rgba(59,130,246,.2);
+    box-shadow: 0 2px 12px rgba(59,130,246,.06);
+    transform: translateX(2px);
+}
+.tsbd-template-modern .tsbd-info-row::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--tsbd-gradient);
+    opacity: 0;
+    transition: opacity .2s;
+}
+.tsbd-template-modern .tsbd-info-row:hover::before {
+    opacity: 1;
+}
+
+/* CTA button with shimmer effect */
+.tsbd-template-modern .tsbd-copy-btn {
+    border-radius: 14px;
+    height: 52px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    position: relative;
+    overflow: hidden;
+}
+.tsbd-template-modern .tsbd-copy-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+    animation: tsbd-shimmer 3s infinite;
+}
+@keyframes tsbd-shimmer {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* Amount buttons with pill style */
+.tsbd-template-modern .tsbd-amount-btn {
+    border-radius: 99px;
+    font-weight: 600;
+    height: 42px;
+    border: 1.5px solid var(--tsbd-border);
+}
+.tsbd-template-modern .tsbd-amount-btn.is-active {
+    border-color: var(--tsbd-primary);
+    background: var(--tsbd-primary);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(59,130,246,.25);
+}
+
+/* Copy action with pulse */
+.tsbd-template-modern .tsbd-info-action {
+    border-radius: 10px;
+    width: 34px;
+    height: 34px;
+    transition: all .2s;
+}
+.tsbd-template-modern .tsbd-info-action:hover {
+    transform: scale(1.08);
 }

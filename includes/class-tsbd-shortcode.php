@@ -60,10 +60,14 @@ class TSBD_Shortcode {
         // Build output
         ob_start();
         $box_id = 'tsbd-' . wp_unique_id();
+        // First account's template determines initial .tsbd-box styling (header, tabs, footer)
+        $first_tpl = ! empty( $accounts[0]['box_template'] ) ? $accounts[0]['box_template'] : $settings['default_template'];
         ?>
         <div id="<?php echo esc_attr( $box_id ); ?>"
-             class="tsbd-box"
-             style="max-width:<?php echo esc_attr( $width ); ?>">
+             class="tsbd-box tsbd-template-<?php echo esc_attr( $first_tpl ); ?>"
+             style="max-width:<?php echo esc_attr( $width ); ?>"
+             data-current-tpl="<?php echo esc_attr( $first_tpl ); ?>"
+        >
 
             <div class="tsbd-header">
                 <h3 class="tsbd-title"><?php echo $title; ?></h3>

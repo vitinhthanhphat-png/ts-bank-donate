@@ -46,6 +46,16 @@
                 if (target) {
                     target.classList.add('is-active');
                 }
+
+                // Update .tsbd-box template class to match active panel's template
+                // This ensures header, tabs, footer styling matches the active template
+                const tpl = tab.dataset.template;
+                if (tpl) {
+                    const oldTpl = box.dataset.currentTpl;
+                    if (oldTpl) box.classList.remove('tsbd-template-' + oldTpl);
+                    box.classList.add('tsbd-template-' + tpl);
+                    box.dataset.currentTpl = tpl;
+                }
             });
         });
 

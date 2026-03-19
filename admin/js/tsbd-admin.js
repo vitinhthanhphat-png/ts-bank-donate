@@ -9,11 +9,21 @@
     // ─── Show/Hide type-specific fields ──────────────────────────────────────
     function toggleTypeFields() {
         const type = $('input[name="type"]:checked').val();
+        if ( ! type ) return; // not on edit page
         $('#tsbd-bank-fields').toggle(type === 'bank');
         $('#tsbd-momo-fields').toggle(type === 'momo');
+        $('#tsbd-common-fields').toggle(type !== 'momo');
         // Update pill selector visual state
         $('.tsbd-type-pill').removeClass('is-selected');
         $('.tsbd-type-pill input[value="' + type + '"]').closest('.tsbd-type-pill').addClass('is-selected');
+        // Update save button text
+        const btnEl = document.getElementById('tsbd-save-btn');
+        if ( btnEl ) {
+            const textNode = Array.from(btnEl.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
+            if ( textNode ) {
+                textNode.textContent = type === 'momo' ? ' Lưu tài khoản' : ' Lưu & Tạo QR';
+            }
+        }
     }
     // Pill click — trigger radio change
     $(document).on('click', '.tsbd-type-pill', function () {
@@ -84,13 +94,18 @@
 
     // ─── Box Template Strip — switch live preview class ───────────────────────
     function switchTplLivePreview( tpl ) {
-        // Template class lives on .tsbd-panel (#tsbd-tpl-live-panel), matching frontend structure
-        const $panel = $('#tsbd-tpl-live-panel');
-        if ( ! $panel.length ) return;
-        $panel.removeClass( function( _i, cls ) {
-            return ( cls.match(/\btsbd-template-\S+/g) || [] ).join(' ');
+        const cls = 'tsbd-template-' + ( tpl || 'modern' );
+        // Apply template class to both panel AND box wrapper
+        // Panel: controls panel-content, info-rows, QR card, CTA
+        // Box: controls header, tabs, footer, overall background
+        ['#tsbd-tpl-live-panel', '#tsbd-tpl-live-box'].forEach(function (sel) {
+            const $el = $(sel);
+            if ( ! $el.length ) return;
+            $el.removeClass( function( _i, c ) {
+                return ( c.match(/\btsbd-template-\S+/g) || [] ).join(' ');
+            });
+            $el.addClass( cls );
         });
-        $panel.addClass( 'tsbd-template-' + ( tpl || 'modern' ) );
         // Auto-switch to template tab so user sees the change
         switchPreviewTab('template');
     }
@@ -325,5 +340,30 @@
         const $n = $('#tsbd-notice').removeClass('is-success is-error').addClass('is-' + type).text(msg).show();
         setTimeout(() => $n.fadeOut(), 4000);
     }
+
+    // ─── MoMo QR Upload (WordPress Media) ────────────────────────────────────
+    $('#tsbd-upload-momo-qr').on('click', function (e) {
+        e.preventDefault();
+        const frame = wp.media({
+            title: 'Chọn ảnh QR MoMo',
+            button: { text: 'Sử dụng ảnh này' },
+            multiple: false,
+            library: { type: 'image' },
+        });
+        frame.on('select', function () {
+            const attachment = frame.state().get('selection').first().toJSON();
+            $('#tsbd_momo_qr_custom').val(attachment.id);
+            $('#tsbd-momo-qr-preview').attr('src', attachment.url).show();
+            $('#tsbd-remove-momo-qr').show();
+            $('#tsbd-momo-qr-status').html('✅ Đã upload').css('color', '#16a34a');
+        });
+        frame.open();
+    });
+    $('#tsbd-remove-momo-qr').on('click', function () {
+        $('#tsbd_momo_qr_custom').val('');
+        $('#tsbd-momo-qr-preview').attr('src', '').hide();
+        $(this).hide();
+        $('#tsbd-momo-qr-status').html('⚠️ Chưa upload QR').css('color', '#ef4444');
+    });
 
 }(jQuery));

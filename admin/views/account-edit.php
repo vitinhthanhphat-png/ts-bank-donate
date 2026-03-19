@@ -184,9 +184,39 @@ $badge_initials = $type === 'momo' ? 'M'
                                     <input type="text" id="tsbd_momo_name" name="account_name" value="<?php echo esc_attr( $account['account_name'] ?? '' ); ?>">
                                 </div>
                             </div>
+
+                            <!-- MoMo QR Upload -->
+                            <div class="tsbd-field">
+                                <label><?php _e( 'Mã QR MoMo', 'ts-bank-donate' ); ?> <span class="required">*</span></label>
+                                <?php $momo_qr = ! empty( $account['momo_qr_custom'] ) ? wp_get_attachment_url( $account['momo_qr_custom'] ) : ''; ?>
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <button type="button" class="button" id="tsbd-upload-momo-qr">📷 <?php _e( 'Chọn ảnh QR', 'ts-bank-donate' ); ?></button>
+                                    <?php if ( $momo_qr ) : ?>
+                                        <img id="tsbd-momo-qr-preview" src="<?php echo esc_url( $momo_qr ); ?>" style="width:80px;height:80px;border-radius:8px;border:2px solid #A855F7;object-fit:contain;padding:4px;background:#fff">
+                                        <button type="button" class="button" id="tsbd-remove-momo-qr" style="color:#ef4444">✕</button>
+                                        <span style="color:#16a34a;font-size:0.8rem">✅ <?php _e( 'Đã upload', 'ts-bank-donate' ); ?></span>
+                                    <?php else : ?>
+                                        <img id="tsbd-momo-qr-preview" src="" style="width:80px;height:80px;border-radius:8px;border:2px dashed #cbd5e1;object-fit:contain;padding:4px;background:#f8fafc;display:none">
+                                        <button type="button" class="button" id="tsbd-remove-momo-qr" style="color:#ef4444;display:none">✕</button>
+                                        <span id="tsbd-momo-qr-status" style="color:#ef4444;font-size:0.8rem">⚠️ <?php _e( 'Chưa upload QR', 'ts-bank-donate' ); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                                <input type="hidden" id="tsbd_momo_qr_custom" name="momo_qr_custom" value="<?php echo esc_attr( $account['momo_qr_custom'] ?? '' ); ?>">
+                            </div>
+
+                            <!-- MoMo Instructions -->
+                            <div style="background:#F5F3FF;border:1px solid #C4B5FD;border-radius:10px;padding:12px 16px;margin-top:4px">
+                                <div style="font-size:0.78rem;color:#5B21B6;line-height:1.6">
+                                    <strong>📱 <?php _e( 'Cách lấy mã QR từ MoMo:', 'ts-bank-donate' ); ?></strong><br>
+                                    <?php _e( '1. Mở app <strong>MoMo</strong> → Nhấn <strong>Nhận tiền</strong>', 'ts-bank-donate' ); ?><br>
+                                    <?php _e( '2. Nhấn <strong>Lưu ảnh</strong> hoặc <strong>Tải QR</strong>', 'ts-bank-donate' ); ?><br>
+                                    <?php _e( '3. Quay lại đây → Nhấn <strong>📷 Chọn ảnh QR</strong> → Upload ảnh vừa lưu', 'ts-bank-donate' ); ?>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Common: Note + Amount (side-by-side) -->
+                        <!-- Common: Note + Amount (side-by-side, hide for MoMo) -->
+                        <div id="tsbd-common-fields"<?php echo $type === 'momo' ? ' style="display:none"' : ''; ?>>
                         <div class="tsbd-field-row">
                             <div class="tsbd-field">
                                 <label for="tsbd_default_note"><?php _e( 'Nội dung CK mặc định', 'ts-bank-donate' ); ?></label>
@@ -211,10 +241,10 @@ $badge_initials = $type === 'momo' ? 'M'
                             <?php
                             $tpl_meta = [
                                 ''        => [ 'icon' => '🌐', 'desc' => 'Dùng setting toàn cục', 'color' => '#8E8E93' ],
-                                'modern'  => [ 'icon' => '✦', 'desc' => 'Card hiện đại, gradient header, có QR code to lớn', 'color' => '#5B8CD5' ],
-                                'minimal' => [ 'icon' => '—', 'desc' => 'Tối giản, chỉ thông tin cần thiết', 'color' => '#7C9070' ],
-                                'glass'   => [ 'icon' => '◈', 'desc' => 'Glassmorphism, hiệu ứng trong mờ', 'color' => '#9B8EC4' ],
-                                'classic' => [ 'icon' => '▣', 'desc' => 'Classic, phù hợp mọi theme', 'color' => '#D4845E' ],
+                                'modern'  => [ 'icon' => '✦', 'desc' => 'Fintech hiện đại, shimmer CTA, hover tinh tế', 'color' => '#3B82F6' ],
+                                'minimal' => [ 'icon' => '—', 'desc' => 'Swiss tối giản, ghost button, cực sạch', 'color' => '#0F172A' ],
+                                'glass'   => [ 'icon' => '◈', 'desc' => 'Aurora Dark, glass hiệu ứng cao cấp', 'color' => '#38BDF8' ],
+                                'classic' => [ 'icon' => '▣', 'desc' => 'Heritage Banking, navy & gold, uy tín', 'color' => '#1B2A4A' ],
                             ];
                             $cur_tpl = $account['box_template'] ?? '';
                             ?>
@@ -228,6 +258,7 @@ $badge_initials = $type === 'momo' ? 'M'
                                 <?php endforeach; ?>
                             </div>
                         </div>
+                        </div><!-- /tsbd-common-fields -->
 
                         <!-- Active toggle -->
                         <div class="tsbd-field tsbd-field-inline tsbd-field-mt">

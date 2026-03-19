@@ -1,93 +1,228 @@
 /* TS Bank Donate — Classic Template
-   Layout: Same vertical stack as Modern (base CSS handles layout).
-   This template uses traditional serif styling with navy/grey tones.
+   ── Refined Banking / Trust Heritage ──
+   Warm neutrals, structured typography, institutional confidence.
+   Personality: Established, reliable, premium — inspired by Wise/N26 heritage.
 */
 
-/* Traditional white card background */
+/* Warm premium base */
 .tsbd-template-classic .tsbd-panel-content {
-    background: #fff;
-    font-family: Georgia, 'Times New Roman', serif;
+    background: #FAFAF8;
+    font-family: 'Plus Jakarta Sans', var(--tsbd-font);
+    gap: 12px;
 }
 
-/* Bank avatar: navy square */
+/* Header override: deep navy gradient */
+.tsbd-template-classic .tsbd-header {
+    background: linear-gradient(135deg, #1B2A4A 0%, #2D3F5E 50%, #1B2A4A 100%);
+}
+.tsbd-template-classic .tsbd-header::before {
+    background: rgba(255,215,0,.04);
+}
+.tsbd-template-classic .tsbd-header::after {
+    background: rgba(255,215,0,.02);
+}
+
+/* Bank avatar: heritage crest style */
 .tsbd-template-classic .tsbd-bank-avatar {
-    background: #1e3a5f;
-    border-radius: 4px;
-    color: #fff;
-    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #1B2A4A, #2D3F5E);
+    border-radius: 10px;
+    color: #E8DCC8;
+    font-family: var(--tsbd-font);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    box-shadow: 0 2px 8px rgba(27,42,74,.2);
+    border: 1px solid rgba(255,255,255,.08);
 }
 .tsbd-template-classic .tsbd-bank-name {
-    font-family: Georgia, serif;
-    font-weight: bold;
+    font-family: var(--tsbd-font);
+    font-weight: 700;
     font-size: 0.9rem;
-    color: #1e3a5f;
+    color: #1B2A4A;
+    letter-spacing: -0.3px;
 }
 .tsbd-template-classic .tsbd-bank-sub {
-    font-family: Georgia, serif;
+    font-family: var(--tsbd-font);
     font-size: 0.72rem;
-    color: #6b7280;
+    color: #8B8B80;
 }
 
-/* QR: simple bordered box */
+/* QR: structured card with gold accent */
 .tsbd-template-classic .tsbd-qr-card {
-    background: #fafafa;
-    border: 1.5px solid #d1d5db;
-    border-radius: 6px;
-    box-shadow: none;
+    background: #fff;
+    border: 1px solid #E5E5DC;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    padding: 20px 20px 14px;
+    position: relative;
+}
+.tsbd-template-classic .tsbd-qr-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px; right: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+    border-radius: 0 0 2px 2px;
 }
 .tsbd-template-classic .tsbd-qr-hint {
-    font-family: Georgia, serif;
     font-size: 0.7rem;
-    color: #9ca3af;
+    color: #A0A094;
 }
 
-/* Info rows: lined separator style */
+/* Info rows: structured table-like layout */
+.tsbd-template-classic .tsbd-info-rows {
+    gap: 0;
+    background: #fff;
+    border: 1px solid #E5E5DC;
+    border-radius: 14px;
+    overflow: hidden;
+}
 .tsbd-template-classic .tsbd-info-row {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #F0F0EB;
     border-radius: 0;
-    padding: 8px 2px;
+    padding: 12px 16px;
+    transition: background .15s;
 }
 .tsbd-template-classic .tsbd-info-row:last-of-type {
     border-bottom: none;
 }
+.tsbd-template-classic .tsbd-info-row:hover {
+    background: #FAFAF8;
+    box-shadow: none;
+}
 .tsbd-template-classic .tsbd-info-label {
-    font-family: Georgia, serif;
-    font-size: 0.7rem;
-    color: #6b7280;
+    font-family: var(--tsbd-font);
+    font-size: 0.68rem;
+    color: #8B8B80;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 .tsbd-template-classic .tsbd-info-value {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
     font-size: 0.85rem;
-    font-weight: bold;
-    color: #111827;
-    letter-spacing: 0.4px;
+    font-weight: 600;
+    color: #1B2A4A;
+    letter-spacing: 0.2px;
+    font-variant-numeric: tabular-nums;
 }
 .tsbd-template-classic .tsbd-info-action {
-    background: transparent;
-    color: #9ca3af;
+    background: #F5F5F0;
+    color: #8B8B80;
+    border-radius: 8px;
+    border: 1px solid #E5E5DC;
 }
 .tsbd-template-classic .tsbd-info-action:hover {
-    background: #f3f4f6;
-    color: #1e3a5f;
+    background: #1B2A4A;
+    color: #E8DCC8;
+    border-color: #1B2A4A;
 }
 
-/* CTA: classic navy button */
+/* Amount buttons: heritage chips */
+.tsbd-template-classic .tsbd-amount-btn {
+    border: 1px solid #D4D4CC;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #5C5C52;
+    height: 40px;
+}
+.tsbd-template-classic .tsbd-amount-btn:hover {
+    border-color: #1B2A4A;
+    color: #1B2A4A;
+    background: transparent;
+}
+.tsbd-template-classic .tsbd-amount-btn.is-active {
+    border-color: #1B2A4A;
+    background: #1B2A4A;
+    color: #E8DCC8;
+    box-shadow: 0 2px 8px rgba(27,42,74,.15);
+}
+
+/* Custom input */
+.tsbd-template-classic .tsbd-input {
+    border: 1px solid #D4D4CC;
+    border-radius: 8px;
+    font-family: 'SF Mono', monospace;
+    font-size: 0.85rem;
+}
+.tsbd-template-classic .tsbd-input:focus {
+    border-color: #1B2A4A;
+    box-shadow: 0 0 0 3px rgba(27,42,74,.06);
+}
+
+/* CTA: institutional gradient button */
 .tsbd-template-classic .tsbd-copy-btn {
-    background: #1e3a5f;
-    box-shadow: none;
-    border-radius: 4px;
-    font-family: Georgia, serif;
-    letter-spacing: 0.5px;
-    height: 46px;
+    background: linear-gradient(135deg, #1B2A4A 0%, #2D3F5E 100%);
+    box-shadow: 0 4px 16px rgba(27,42,74,.2);
+    border-radius: 12px;
+    height: 50px;
+    font-family: var(--tsbd-font);
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+.tsbd-template-classic .tsbd-copy-btn::after {
+    background: linear-gradient(135deg, rgba(201,169,110,.1) 0%, transparent 60%);
 }
 .tsbd-template-classic .tsbd-copy-btn:hover {
-    background: #15294a;
+    background: linear-gradient(135deg, #15213B 0%, #253550 100%);
+    box-shadow: 0 6px 24px rgba(27,42,74,.25);
     opacity: 1;
 }
+.tsbd-template-classic .tsbd-copy-btn.is-copied {
+    background: linear-gradient(135deg, #10B981, #059669);
+    box-shadow: 0 4px 16px rgba(16,185,129,.25);
+}
+
+/* MoMo button */
 .tsbd-template-classic .tsbd-momo-open-btn {
-    border-radius: 4px;
-    font-family: Georgia, serif;
-    height: 46px;
+    border-radius: 12px;
+    height: 50px;
+    font-family: var(--tsbd-font);
+}
+
+/* Amounts label */
+.tsbd-template-classic .tsbd-amounts-label {
+    color: #8B8B80;
+    font-weight: 600;
+}
+
+/* Tabs: solid pill style */
+.tsbd-template-classic .tsbd-tabs {
+    background: #F5F5F0;
+    padding: 6px 8px;
+    gap: 4px;
+}
+.tsbd-template-classic .tsbd-tab {
+    border-bottom: none;
+    border-radius: 8px;
+    color: #8B8B80;
+    font-weight: 500;
+    padding: 10px 14px 10px;
+}
+.tsbd-template-classic .tsbd-tab:hover {
+    background: rgba(27,42,74,.04);
+    color: #5C5C52;
+}
+.tsbd-template-classic .tsbd-tab.is-active {
+    background: #fff;
+    color: #1B2A4A;
+    border-bottom-color: transparent;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+/* Footer */
+.tsbd-template-classic .tsbd-footer {
+    background: #FAFAF8;
+}
+.tsbd-template-classic .tsbd-footer small,
+.tsbd-template-classic .tsbd-footer a {
+    color: #A0A094;
+}
+
+/* Note inline: mono */
+.tsbd-template-classic .tsbd-note-inline {
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
 }
