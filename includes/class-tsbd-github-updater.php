@@ -193,20 +193,36 @@ class TSBD_GitHub_Updater {
 	public function after_install( $response, $hook_extra, $result ) {
 		global $wp_filesystem;
 
-		if ( ! isset( $hook_extra['plugin'] ) || $hook_extra['plugin'] !== $this->plugin_basename ) {
+		// Only handle our own plugin updates
+		$is_our_plugin = false;
+		if ( isset( $hook_extra['plugin'] ) && $hook_extra['plugin'] === $this->plugin_basename ) {
+			$is_our_plugin = true;
+		}
+		if ( ! $is_our_plugin ) {
 			return $result;
 		}
 
-		$proper_destination = WP_PLUGIN_DIR . '/' . $this->slug;
-		$wp_filesystem->move( $result['destination'], $proper_destination );
-		$result['destination']      = $proper_destination;
-		$result['destination_name'] = $this->slug;
+		$proper_destination = trailingslashit( WP_PLUGIN_DIR ) . $this->slug;
+		$source             = isset( $result['destination'] ) ? untrailingslashit( $result['destination'] ) : '';
 
-		// Clear update cache
+		// Only rename if the extracted directory is different from expected
+		if ( $source && $source !== $proper_destination && $wp_filesystem->exists( $source ) ) {
+			// Remove old destination if it exists (WordPress might have already cleared it)
+			if ( $wp_filesystem->exists( $proper_destination ) ) {
+				$wp_filesystem->delete( $proper_destination, true );
+			}
+
+			$wp_filesystem->move( $source, $proper_destination );
+			$result['destination']      = $proper_destination;
+			$result['destination_name'] = $this->slug;
+		}
+
+		// Clear update cache so it re-checks fresh
 		delete_transient( $this->cache_key );
 
-		// Re-activate if was active before
-		if ( is_plugin_active( $this->plugin_basename ) ) {
+		// Re-activate plugin
+		$active_plugins = get_option( 'active_plugins', [] );
+		if ( in_array( $this->plugin_basename, $active_plugins, true ) ) {
 			activate_plugin( $this->plugin_basename );
 		}
 
