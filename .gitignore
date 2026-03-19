@@ -1,0 +1,21 @@
+# WordPress
+*.log
+*.sql
+*.bak
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Misc
+.env

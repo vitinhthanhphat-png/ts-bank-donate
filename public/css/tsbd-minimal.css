@@ -1,0 +1,76 @@
+/* TS Bank Donate — Minimal Template
+   Layout: Same vertical stack as Modern (base CSS handles layout).
+   This template only overrides visual styling to be cleaner/lighter.
+*/
+
+/* Lighter background */
+.tsbd-template-minimal .tsbd-panel-content {
+    background: #f9fafb;
+    gap: 10px;
+}
+
+/* Hide bank avatar — show bank name text only */
+.tsbd-template-minimal .tsbd-bank-avatar {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1.5px solid #e5e7eb;
+    color: var(--tsbd-muted);
+    font-size: 0.72rem;
+    border-radius: 8px;
+}
+.tsbd-template-minimal .tsbd-bank-name {
+    font-size: 0.85rem;
+    color: var(--tsbd-text);
+}
+.tsbd-template-minimal .tsbd-bank-sub {
+    font-size: 0.7rem;
+}
+
+/* QR: smaller, no heavy shadow */
+.tsbd-template-minimal .tsbd-qr-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 12px 12px 10px;
+}
+.tsbd-template-minimal .tsbd-qr-img {
+    width: 160px;
+}
+
+/* Info rows: flat, no card style */
+.tsbd-template-minimal .tsbd-info-row {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    border-radius: 0;
+    padding: 8px 0;
+}
+.tsbd-template-minimal .tsbd-info-row:last-of-type {
+    border-bottom: none;
+}
+.tsbd-template-minimal .tsbd-info-action {
+    background: transparent;
+    color: var(--tsbd-muted);
+}
+.tsbd-template-minimal .tsbd-info-action:hover {
+    background: #f0f0f0;
+}
+
+/* CTA: outline style */
+.tsbd-template-minimal .tsbd-copy-btn {
+    background: transparent;
+    border: 1.5px solid var(--tsbd-primary);
+    color: var(--tsbd-primary);
+    box-shadow: none;
+    height: 44px;
+}
+.tsbd-template-minimal .tsbd-copy-btn:hover {
+    background: var(--tsbd-primary);
+    color: #fff;
+}
+.tsbd-template-minimal .tsbd-momo-open-btn {
+    height: 44px;
+    box-shadow: none;
+}

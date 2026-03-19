@@ -1,0 +1,377 @@
+/* TS Bank Donate — Base CSS (shared, CSS variables) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --tsbd-primary:   #5B8CD5;
+    --tsbd-accent:    #7C9070;
+    --tsbd-bg:        #F7F6F3;
+    --tsbd-card:      #FFFFFF;
+    --tsbd-text:      #2D2D2D;
+    --tsbd-muted:     #6B6B6B;
+    --tsbd-subtle:    #8E8E93;
+    --tsbd-border:    #F0EFEC;
+    --tsbd-border2:   #E5E4E1;
+    --tsbd-radius:    16px;
+    --tsbd-success:   #7C9070;
+    --tsbd-error:     #D4845E;
+    --tsbd-momo:      #A50064;
+    --tsbd-shadow:    0 4px 30px rgba(0,0,0,.06);
+    --tsbd-font:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --tsbd-gradient:  linear-gradient(135deg, #5B8CD5, #7C9070);
+}
+
+/* Reset within box */
+.tsbd-box, .tsbd-box * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tsbd-box {
+    font-family: var(--tsbd-font);
+    color: var(--tsbd-text);
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    background: var(--tsbd-bg);
+    border-radius: var(--tsbd-radius);
+    overflow: hidden;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.tsbd-header {
+    background: var(--tsbd-gradient);
+    padding: 28px 24px 24px;
+    text-align: center;
+}
+.tsbd-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+.tsbd-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,.85);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ─── Tabs ───────────────────────────────────────────────────────────────── */
+.tsbd-tabs {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    background: var(--tsbd-card);
+    border-bottom: 1px solid var(--tsbd-border);
+}
+.tsbd-tabs::-webkit-scrollbar { display: none; }
+
+.tsbd-tab {
+    flex: 1;
+    flex-shrink: 0;
+    min-width: 80px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    font-family: var(--tsbd-font);
+    font-size: 0.81rem;
+    font-weight: 500;
+    color: var(--tsbd-subtle);
+    cursor: pointer;
+    padding: 13px 12px;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+.tsbd-tab:hover   { color: var(--tsbd-primary); }
+.tsbd-tab.is-active {
+    color: var(--tsbd-primary);
+    border-bottom-color: var(--tsbd-primary);
+    font-weight: 600;
+    background: transparent;
+}
+
+/* ─── Panels ─────────────────────────────────────────────────────────────── */
+.tsbd-panel { display: none; }
+.tsbd-panel.is-active { display: block; }
+
+/* ─── Panel content area ─────────────────────────────────────────────────── */
+.tsbd-panel-content {
+    padding: 16px;
+    background: var(--tsbd-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ─── Bank intro row (logo + name) ──────────────────────────────────────── */
+.tsbd-bank-intro {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.tsbd-bank-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--tsbd-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    letter-spacing: -0.5px;
+}
+.tsbd-bank-avatar.is-momo {
+    background: linear-gradient(135deg, #A50064, #E0005B);
+    font-size: 18px;
+    font-weight: 800;
+}
+.tsbd-bank-intro-info {}
+.tsbd-bank-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--tsbd-text);
+    margin: 0 0 2px;
+}
+.tsbd-bank-sub {
+    font-size: 0.75rem;
+    color: var(--tsbd-subtle);
+    margin: 0;
+}
+
+/* ─── QR card ────────────────────────────────────────────────────────────── */
+.tsbd-qr-card {
+    background: var(--tsbd-card);
+    border-radius: var(--tsbd-radius);
+    box-shadow: var(--tsbd-shadow);
+    padding: 20px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.tsbd-qr-wrap {
+    display: flex;
+    justify-content: center;
+}
+.tsbd-qr-img {
+    display: block;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+.tsbd-qr-hint {
+    font-size: 0.75rem;
+    color: var(--tsbd-subtle);
+    text-align: center;
+    margin: 0;
+}
+
+/* ─── Info rows ──────────────────────────────────────────────────────────── */
+.tsbd-info-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.tsbd-info-row {
+    background: var(--tsbd-card);
+    border: 1px solid var(--tsbd-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.tsbd-info-row-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.tsbd-info-label {
+    font-size: 0.7rem;
+    color: var(--tsbd-subtle);
+    font-weight: 500;
+}
+.tsbd-info-value {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--tsbd-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tsbd-info-action {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: var(--tsbd-bg);
+    color: var(--tsbd-accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    text-decoration: none;
+}
+.tsbd-info-action:hover { background: var(--tsbd-border2); }
+.tsbd-info-action.is-edit { background: rgba(124,144,112,.12); }
+
+/* ─── Note editable input ────────────────────────────────────────────────── */
+.tsbd-note-inline {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--tsbd-text);
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: var(--tsbd-font);
+    width: 100%;
+}
+.tsbd-note-inline:focus { color: var(--tsbd-primary); }
+
+/* ─── Amount suggestions ─────────────────────────────────────────────────── */
+.tsbd-amounts-section {}
+.tsbd-amounts-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--tsbd-muted);
+    margin: 0 0 8px;
+}
+.tsbd-amounts {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.tsbd-amount-btn {
+    flex: 1;
+    min-width: 60px;
+    height: 40px;
+    border: 1.5px solid var(--tsbd-border2);
+    background: var(--tsbd-card);
+    border-radius: 8px;
+    font-family: var(--tsbd-font);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--tsbd-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+.tsbd-amount-btn:hover {
+    border-color: var(--tsbd-primary);
+    color: var(--tsbd-primary);
+}
+.tsbd-amount-btn.is-active {
+    border-color: var(--tsbd-primary);
+    border-width: 1.5px;
+    color: var(--tsbd-primary);
+    background: rgba(91,140,213,.10);
+    font-weight: 600;
+}
+
+/* ─── Custom amount input ────────────────────────────────────────────────── */
+.tsbd-input-group { margin: 4px 0 0; }
+.tsbd-input-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--tsbd-subtle);
+    margin-bottom: 4px;
+}
+.tsbd-input {
+    width: 100%;
+    border: 1.5px solid var(--tsbd-border2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: var(--tsbd-font);
+    font-size: 0.88rem;
+    color: var(--tsbd-text);
+    background: #FAFAF8;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.tsbd-input:focus { border-color: var(--tsbd-primary); background: var(--tsbd-card); }
+
+/* ─── CTA / Copy button ──────────────────────────────────────────────────── */
+.tsbd-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 52px;
+    background: var(--tsbd-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--tsbd-font);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    box-shadow: 0 4px 20px rgba(91,140,213,.35);
+    text-decoration: none;
+}
+.tsbd-copy-btn:hover  { opacity: 0.92; }
+.tsbd-copy-btn:active { transform: scale(0.985); }
+.tsbd-copy-btn.is-copied { background: linear-gradient(135deg, #7C9070, #4A5D43); }
+
+/* ─── MoMo open button ───────────────────────────────────────────────────── */
+.tsbd-momo-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 52px;
+    background: linear-gradient(135deg, #A50064, #E0005B);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--tsbd-font);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(165,0,100,.3);
+}
+
+/* ─── Toast ──────────────────────────────────────────────────────────────── */
+.tsbd-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 10px 20px;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    z-index: 99999;
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), opacity 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.tsbd-toast.is-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.tsbd-footer { text-align: center; padding: 12px 16px 16px; }
+.tsbd-footer small { font-size: 0.68rem; color: var(--tsbd-subtle); }
+.tsbd-footer a { color: var(--tsbd-subtle); text-decoration: none; }
+.tsbd-footer a:hover { text-decoration: underline; }
+
+/* ─── Empty state ────────────────────────────────────────────────────────── */
+.tsbd-empty { color: var(--tsbd-subtle); font-style: italic; font-size: 0.88rem; padding: 20px; text-align: center; }

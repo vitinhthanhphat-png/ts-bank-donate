@@ -1,0 +1,1046 @@
+/* TS Bank Donate — Admin CSS */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* ─── Admin CSS Variables ───────────────────────────────────────────────── */
+:root {
+    --ta-primary:   #5B8CD5;
+    --ta-accent:    #7C9070;
+    --ta-bg:        #F7F6F3;
+    --ta-card:      #FFFFFF;
+    --ta-body:      #F1F0EF;
+    --ta-text:      #2D2D2D;
+    --ta-muted:     #6B6B6B;
+    --ta-subtle:    #8E8E93;
+    --ta-border:    #F0EFEC;
+    --ta-border2:   #E5E4E1;
+    --ta-radius:    14px;
+    --ta-font:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --ta-gradient:  linear-gradient(135deg, #5B8CD5, #7C9070);
+    --ta-shadow:    0 2px 16px rgba(0,0,0,.07);
+    --ta-shadow-lg: 0 6px 32px rgba(0,0,0,.10);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────── */
+.tsbd-admin-wrap,
+.tsbd-admin-wrap * {
+    box-sizing: border-box;
+    font-family: var(--ta-font);
+}
+
+/* ─── Page Header ───────────────────────────────────────────────────────── */
+.tsbd-admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid var(--ta-border);
+}
+.tsbd-admin-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.tsbd-admin-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--ta-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.tsbd-admin-title-group h1 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: var(--ta-text);
+    line-height: 1.2;
+}
+.tsbd-admin-title-group p {
+    font-size: 0.78rem;
+    color: var(--ta-subtle);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ─── Add/Back button ───────────────────────────────────────────────────── */
+.tsbd-admin-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ta-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    padding: 9px 16px;
+    font-family: var(--ta-font);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+.tsbd-admin-add-btn:hover { opacity: 0.88; color: #fff; }
+.tsbd-admin-back-btn {
+    background: transparent;
+    color: var(--ta-primary);
+    border: 1.5px solid var(--ta-border2);
+}
+.tsbd-admin-back-btn:hover { background: var(--ta-bg); color: var(--ta-primary); }
+
+/* ─── Breadcrumb ────────────────────────────────────────────────────────── */
+.tsbd-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.78rem;
+    color: var(--ta-subtle);
+    margin-bottom: 18px;
+}
+.tsbd-breadcrumb a { color: var(--ta-primary); text-decoration: none; }
+.tsbd-breadcrumb a:hover { text-decoration: underline; }
+.tsbd-breadcrumb .current { color: var(--ta-text); font-weight: 500; }
+.tsbd-breadcrumb .sep { display: flex; align-items: center; }
+
+/* ─── Notice ────────────────────────────────────────────────────────────── */
+.tsbd-notice {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+.tsbd-notice.is-success { background: rgba(124,144,112,.12); color: #4a6a40; border-left: 3px solid #7C9070; }
+.tsbd-notice.is-error   { background: rgba(212,132,94,.12); color: #9a4a24; border-left: 3px solid #D4845E; }
+
+/* ─── Accounts List ─────────────────────────────────────────────────────── */
+.tsbd-list-card {
+    background: var(--ta-card);
+    border-radius: var(--ta-radius);
+    border: 1px solid var(--ta-border);
+    overflow: hidden;
+    box-shadow: var(--ta-shadow);
+}
+.tsbd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+}
+.tsbd-table thead th {
+    background: var(--ta-bg);
+    padding: 11px 14px;
+    font-weight: 600;
+    color: var(--ta-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--ta-border);
+    text-align: left;
+}
+.tsbd-table tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--ta-border);
+    color: var(--ta-text);
+    vertical-align: middle;
+}
+.tsbd-table tbody tr:last-child td { border-bottom: none; }
+.tsbd-table tbody tr:hover td { background: rgba(91,140,213,.035); }
+.tsbd-table .tsbd-account-no-cell { font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: 600; }
+
+/* Account type badges */
+.tsbd-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+.tsbd-type-badge.is-bank  { background: rgba(91,140,213,.12); color: #2a5caa; }
+.tsbd-type-badge.is-momo  { background: rgba(165,0,100,.10); color: #a50064; }
+
+/* Active badge */
+.tsbd-active-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.tsbd-active-yes .tsbd-active-dot { background: #7C9070; }
+.tsbd-active-no  .tsbd-active-dot { background: #D4845E; }
+.tsbd-active-yes { color: #4a6a40; font-size: 0.78rem; font-weight: 500; }
+.tsbd-active-no  { color: #9a4a24; font-size: 0.78rem; font-weight: 500; }
+
+/* Row actions */
+.tsbd-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.tsbd-icon-btn {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    border: 1px solid var(--ta-border2);
+    background: var(--ta-card);
+    color: var(--ta-muted);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+.tsbd-icon-btn:hover { background: var(--ta-primary); color: #fff; border-color: var(--ta-primary); }
+.tsbd-icon-btn.is-danger:hover { background: #D4845E; border-color: #D4845E; color: #fff; }
+
+/* Sort handle */
+.tsbd-drag-handle { cursor: grab; color: var(--ta-subtle); padding: 4px; }
+
+/* Shortcode cell */
+.tsbd-shortcode-cell code {
+    background: var(--ta-bg);
+    border: 1px solid var(--ta-border2);
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 0.78rem;
+    color: var(--ta-text);
+    cursor: pointer;
+    user-select: all;
+}
+.tsbd-shortcode-cell code:hover { background: var(--ta-border2); }
+
+/* Empty state */
+.tsbd-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ta-subtle);
+    font-size: 0.88rem;
+}
+.tsbd-empty-state p { margin: 0 0 14px; }
+
+/* ─── Edit Form Layout ───────────────────────────────────────────────────── */
+.tsbd-edit-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 20px;
+    align-items: start;
+}
+@media (max-width: 900px) {
+    .tsbd-edit-layout { grid-template-columns: 1fr; }
+}
+
+/* ─── Form Card ─────────────────────────────────────────────────────────── */
+.tsbd-form-card {
+    background: var(--ta-card);
+    border-radius: var(--ta-radius);
+    border: 1px solid var(--ta-border);
+    overflow: hidden;
+    box-shadow: var(--ta-shadow);
+}
+.tsbd-form-card-head {
+    padding: 14px 20px;
+    background: var(--ta-bg);
+    border-bottom: 1px solid var(--ta-border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.tsbd-form-card-head h2 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ta-text);
+    margin: 0;
+}
+.tsbd-form-card-body { padding: 20px; }
+
+/* ─── Form Fields ────────────────────────────────────────────────────────── */
+.tsbd-field {
+    margin-bottom: 14px;
+}
+.tsbd-field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ta-muted);
+    margin-bottom: 5px;
+}
+.tsbd-required { color: #D4845E; margin-left: 2px; }
+.tsbd-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.tsbd-field-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.tsbd-field-inline label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ta-text);
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ─── Checkbox spacing ─────────────────────────────────────────────────── */
+.tsbd-field-mt { margin-top: 16px !important; margin-bottom: 16px !important; }
+
+/* ─── Inputs ─────────────────────────────────────────────────────────────── */
+.tsbd-input,
+.tsbd-form-card-body input[type="text"],
+.tsbd-form-card-body input[type="number"],
+.tsbd-form-card-body select,
+.tsbd-form-card-body textarea {
+    width: 100%;
+    border: 1.5px solid var(--ta-border2);
+    border-radius: 9px;
+    padding: 10px 13px;
+    font-family: var(--ta-font);
+    font-size: 0.85rem;
+    color: var(--ta-text);
+    background: #FAFAF8;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+}
+.tsbd-input:focus,
+.tsbd-form-card-body input[type="text"]:focus,
+.tsbd-form-card-body input[type="number"]:focus,
+.tsbd-form-card-body select:focus,
+.tsbd-form-card-body textarea:focus {
+    border-color: var(--ta-primary);
+    background: var(--ta-card);
+    box-shadow: 0 0 0 3px rgba(91,140,213,.12);
+}
+
+/* Type toggle (Bank/MoMo) */
+.tsbd-type-toggle { display: flex; gap: 8px; }
+.tsbd-type-opt {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 8px;
+    border: 1.5px solid var(--ta-border2);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ta-muted);
+    transition: all 0.15s;
+    background: var(--ta-bg);
+    user-select: none;
+}
+.tsbd-type-opt:hover { border-color: var(--ta-primary); color: var(--ta-primary); }
+.tsbd-type-opt.is-active { border-color: var(--ta-primary); color: var(--ta-primary); background: rgba(91,140,213,.08); font-weight: 600; }
+.tsbd-type-opt svg { flex-shrink: 0; }
+
+/* ─── Form Actions ───────────────────────────────────────────────────────── */
+.tsbd-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+.tsbd-save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--ta-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 20px;
+    font-family: var(--ta-font);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+}
+.tsbd-save-btn:hover  { opacity: 0.9; }
+.tsbd-save-btn:active { transform: scale(0.985); }
+.tsbd-save-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.tsbd-spinner { display: none; }
+
+/* ─── Section divider ───────────────────────────────────────────────────── */
+.tsbd-divider {
+    height: 1px;
+    background: var(--ta-border);
+    margin: 16px 0;
+}
+.tsbd-section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--ta-subtle);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.tsbd-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--ta-border);
+}
+
+/* ─── QR Preview Box (right panel) ─────────────────────────────────────── */
+.tsbd-qr-preview-box {
+    background: var(--ta-card);
+    border-radius: var(--ta-radius);
+    border: 1px solid var(--ta-border);
+    box-shadow: var(--ta-shadow);
+    overflow: hidden;
+    position: sticky;
+    top: 32px;
+}
+
+/* ─── Preview tab bar ───────────────────────────────────────────────────── */
+.tsbd-preview-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--ta-border);
+    background: var(--ta-bg);
+}
+.tsbd-preview-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 11px 6px;
+    border: none;
+    background: transparent;
+    font-family: var(--ta-font);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ta-subtle);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+}
+.tsbd-preview-tab:hover { color: var(--ta-primary); }
+.tsbd-preview-tab.is-active {
+    color: var(--ta-primary);
+    border-bottom-color: var(--ta-primary);
+    font-weight: 600;
+}
+.tsbd-preview-tab .tsbd-qr-live-badge { margin-left: 0; }
+
+/* ─── QR Preview body ───────────────────────────────────────────────────── */
+.tsbd-qr-preview-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+#tsbd-qr-preview {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 10px;
+    display: block;
+}
+#tsbd-qr-preview-placeholder {
+    font-size: 0.78rem;
+    color: var(--ta-subtle);
+    text-align: center;
+    padding: 30px 16px;
+    background: var(--ta-bg);
+    border-radius: 10px;
+    width: 100%;
+}
+/* Bank badge below QR */
+.tsbd-qr-bank-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ta-bg);
+    border: 1px solid var(--ta-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    width: 100%;
+}
+.tsbd-qr-bank-badge-ico {
+    width: 32px; height: 32px;
+    border-radius: 7px;
+    background: var(--ta-gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+}
+.tsbd-qr-bank-badge-name { font-size: 0.78rem; font-weight: 600; color: var(--ta-text); }
+.tsbd-qr-bank-badge-acct { font-size: 0.7rem; color: var(--ta-subtle); font-family: 'Courier New', monospace; }
+/* Media link */
+.tsbd-media-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    color: var(--ta-primary);
+    text-decoration: none;
+}
+.tsbd-media-link:hover { text-decoration: underline; }
+
+/* "Live" badge in QR preview head */
+.tsbd-qr-live-badge {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px 2px 4px;
+    background: rgba(124,144,112,.12);
+    color: var(--ta-accent);
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: var(--ta-font);
+    letter-spacing: 0.3px;
+}
+.tsbd-qr-live-badge::before {
+    content: '';
+    display: block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--ta-accent);
+    animation: tsbd-pulse 1.8s ease infinite;
+}
+@keyframes tsbd-pulse {
+    0%,100% { opacity: 1; } 50% { opacity: 0.35; }
+}
+/* Live note below QR */
+.tsbd-qr-live-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 0.72rem;
+    color: var(--ta-subtle);
+    text-align: left;
+    line-height: 1.5;
+    font-family: var(--ta-font);
+    margin: 0;
+    padding: 0 4px;
+}
+.tsbd-qr-live-note svg { flex-shrink: 0; margin-top: 2px; color: var(--ta-primary); }
+/* QR image loading state */
+#tsbd-qr-preview.is-loading { opacity: 0.4; transition: opacity 0.2s; }
+
+/* ─── Box Template Preview Strip ─────────────────────────────────────────── */
+.tsbd-tpl-preview-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 0 2px;
+    scrollbar-width: none;
+    margin-top: 6px;
+}
+.tsbd-tpl-preview-strip::-webkit-scrollbar { display: none; }
+.tsbd-tpl-card {
+    flex: 1 0 88px;
+    min-width: 80px;
+    max-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border: 1.5px solid var(--ta-border2);
+    border-radius: 12px;
+    cursor: pointer;
+    background: var(--ta-bg);
+    transition: all 0.15s;
+}
+.tsbd-tpl-card:hover { border-color: var(--ta-primary); background: rgba(91,140,213,.05); }
+.tsbd-tpl-card.is-active { border-color: var(--ta-primary); background: rgba(91,140,213,.08); }
+.tsbd-tpl-card svg { color: var(--ta-muted); transition: color 0.15s; }
+.tsbd-tpl-card.is-active svg,
+.tsbd-tpl-card:hover svg { color: var(--ta-primary); }
+.tsbd-tpl-name {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ta-text);
+    text-align: center;
+}
+.tsbd-tpl-card.is-active .tsbd-tpl-name { color: var(--ta-primary); }
+.tsbd-tpl-desc {
+    display: block;
+    font-size: 0.62rem;
+    color: var(--ta-subtle);
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* ─── VietQR Template Picker ─────────────────────────────────────────────── */
+.tsbd-vqr-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+}
+.tsbd-vqr-opt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 6px;
+    border: 1.5px solid var(--ta-border2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--ta-bg);
+}
+.tsbd-vqr-opt:hover { border-color: var(--ta-primary); background: rgba(91,140,213,.05); }
+.tsbd-vqr-opt:has(input:checked),
+.tsbd-vqr-opt.is-selected {
+    border-color: var(--ta-primary);
+    background: rgba(91,140,213,.08);
+}
+.tsbd-vqr-opt input[type="radio"] { display: none; }
+/* SVG thumbnail — fixed size, centered */
+.tsbd-vqr-svg {
+    width: 48px;
+    height: auto;
+    max-height: 64px;
+    display: block;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+/* Label below the SVG */
+.tsbd-vqr-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ta-text);
+    text-align: center;
+    width: 100%;
+    line-height: 1.3;
+}
+.tsbd-vqr-opt.is-selected .tsbd-vqr-label { color: var(--ta-primary); }
+.tsbd-vqr-label em {
+    font-style: normal;
+    font-size: 0.60rem;
+    color: var(--ta-subtle);
+    font-weight: 400;
+}
+
+/* ─── Template live preview pane ────────────────────────────────────────── */
+.tsbd-tpl-live-pane {
+    background: #e8e8e5;
+}
+.tsbd-tpl-live-scale-wrap {
+    padding: 14px 10px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    max-height: 600px;
+}
+/* Render the widget at its natural width then zoom it down to fit */
+.tsbd-tpl-live-scale-wrap .tsbd-box {
+    width: 360px !important;
+    max-width: 360px !important;
+    zoom: 0.65;               /* 360 * 0.65 ≈ 234px — fits 280px panel */
+    pointer-events: none;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,.12);
+    border-radius: 16px;
+    overflow: hidden;
+}
+/* Constrain any images inside the preview widget */
+.tsbd-tpl-live-scale-wrap .tsbd-box img,
+.tsbd-tpl-live-scale-wrap .tsbd-box .tsbd-qr-img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+/* Note below preview */
+.tsbd-tpl-live-pane .tsbd-qr-live-note {
+    font-size: 0.70rem;
+    padding: 6px 12px 10px;
+    margin: 0;
+}
+
+
+/* ─── Settings page ──────────────────────────────────────────────────────── */
+.tsbd-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+@media (max-width: 700px) { .tsbd-settings-grid { grid-template-columns: 1fr; } }
+
+/* ─── Template mockup mini-cards (used in strip preview panel if needed) ─── */
+.tsbd-mk-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E5E7EB;
+    background: #fff;
+}
+.tsbd-mk-header {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+}
+.tsbd-mk-grad { background: linear-gradient(135deg, #5B8CD5, #7C9070); }
+.tsbd-mk-tabs {
+    display: flex;
+    border-bottom: 1px solid #E5E7EB;
+    background: #fff;
+}
+.tsbd-mk-tab {
+    flex: 1;
+    padding: 5px 8px;
+    font-size: 0.68rem;
+    text-align: center;
+    color: #8E8E93;
+    border-bottom: 2px solid transparent;
+}
+.tsbd-mk-tab.is-a { color: #5B8CD5; border-bottom-color: #5B8CD5; font-weight: 600; }
+.tsbd-mk-body {
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.tsbd-mk-qr-box {
+    display: flex;
+    justify-content: center;
+}
+.tsbd-mk-qr {
+    width: 60px; height: 60px;
+    background: repeating-conic-gradient(#333 0% 25%, #fff 0% 50%) 0 0 / 8px 8px;
+    border-radius: 4px;
+}
+.tsbd-mk-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #F0F0EF;
+    padding: 4px 0;
+    width: 100%;
+    font-size: 0.68rem;
+}
+.tsbd-mk-row span { color: #8E8E93; }
+.tsbd-mk-row b { color: #2D2D2D; font-size: 0.72rem; }
+.tsbd-mk-btn {
+    width: 100%;
+    padding: 7px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #fff;
+}
+.tsbd-mk-note {
+    font-size: 0.75rem;
+    color: var(--ta-subtle);
+    padding: 10px;
+    text-align: center;
+    border: 1px dashed var(--ta-border2);
+    border-radius: 8px;
+    background: var(--ta-bg);
+}
+/* Minimal template mini mockup */
+.tsbd-mk-minimal { border-radius: 6px; }
+.tsbd-mk-tabs-min { border-bottom: 1.5px solid #E5E7EB; gap: 0; }
+.tsbd-mk-tabs-min .tsbd-mk-tab { border-radius: 0; }
+.tsbd-mk-body-min { flex-direction: row; align-items: flex-start; gap: 8px; padding: 8px; }
+.tsbd-mk-qr-sm { width: 50px; }
+.tsbd-mk-qr-s { width: 50px; height: 50px; }
+.tsbd-mk-info-col { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.tsbd-mk-row-sm { padding: 2px 0; border-bottom-color: #F0F0EF; }
+.tsbd-mk-row-sm span { font-size: 0.64rem; }
+.tsbd-mk-row-sm b { font-size: 0.68rem; }
+
+/* Glass template */
+.tsbd-mk-glass { position: relative; min-height: 160px; overflow: hidden; }
+.tsbd-mk-glass-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.tsbd-mk-glass-card {
+    position: relative; z-index: 1;
+    margin: 12px; padding: 10px;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.tsbd-mk-tabs-glass { border-bottom: 1px solid rgba(255,255,255,.3); background: transparent; width: 100%; }
+.tsbd-mk-tabs-glass .tsbd-mk-tab { color: rgba(255,255,255,.7); }
+.tsbd-mk-tabs-glass .tsbd-mk-tab.is-a { color: #fff; border-bottom-color: #fff; }
+.tsbd-mk-qr-glass { background: rgba(255,255,255,.9); }
+.tsbd-mk-row-glass { border-bottom-color: rgba(255,255,255,.2); width: 100%; padding: 4px 0; display: flex; justify-content: space-between; }
+.tsbd-mk-row-glass span { color: rgba(255,255,255,.7); font-size: 0.68rem; }
+.tsbd-mk-row-glass b { color: #fff; font-size: 0.72rem; }
+.tsbd-mk-glass-btn { background: rgba(255,255,255,.25); border: 1px solid rgba(255,255,255,.4); width: 100%; text-align: center; padding: 7px; border-radius: 8px; font-size: 0.72rem; color: #fff; font-weight: 600; }
+
+/* Classic template */
+.tsbd-mk-classic { border: 1px solid #D1D5DB; border-radius: 4px; }
+.tsbd-mk-classic-head { background: #1e3a5f; color: #fff; padding: 10px 14px; font-size: 0.78rem; font-weight: 700; }
+.tsbd-mk-classic .tsbd-mk-body { background: #fff; align-items: stretch; padding: 10px 14px; }
+.tsbd-mk-classic .tsbd-mk-qr-box { justify-content: center; }
+.tsbd-mk-qr-classic { border: 2px solid #D1D5DB; }
+.tsbd-mk-row-classic { border-bottom-color: #E5E7EB; }
+.tsbd-mk-row-classic span { color: #6B7280; }
+.tsbd-mk-row-classic b { color: #111827; }
+
+/* ─── Accounts List — table wrapper ─────────────────────────────────────── */
+.tsbd-table-card {
+    background: var(--ta-card);
+    border-radius: var(--ta-radius);
+    border: 1px solid var(--ta-border);
+    overflow: hidden;
+    box-shadow: var(--ta-shadow);
+}
+
+/* ─── Accounts List — table ─────────────────────────────────────────────── */
+.tsbd-accounts-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--ta-font);
+    font-size: 0.82rem;
+    table-layout: fixed;
+}
+.tsbd-accounts-tbl thead th {
+    background: var(--ta-bg);
+    padding: 10px 12px;
+    font-weight: 600;
+    color: var(--ta-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--ta-border);
+    text-align: left;
+    white-space: nowrap;
+}
+.tsbd-accounts-tbl thead th:first-child { width: 60px; }
+.tsbd-accounts-tbl thead th.col-center { text-align: center; width: 90px; }
+.tsbd-accounts-tbl thead th.col-right  { text-align: right;  width: 100px; }
+.tsbd-accounts-tbl tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--ta-border);
+    color: var(--ta-text);
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tsbd-accounts-tbl tbody tr:last-child td { border-bottom: none; }
+.tsbd-accounts-tbl tbody tr:hover td { background: rgba(91,140,213,.03); }
+.tsbd-accounts-tbl td.col-center { text-align: center; }
+.tsbd-accounts-tbl td.col-right  { text-align: right; }
+
+/* ─── QR thumbnail ──────────────────────────────────────────────────────── */
+.tsbd-qr-thumb {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--ta-border);
+    display: block;
+}
+.tsbd-no-qr {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px dashed var(--ta-border2);
+    align-items: center;
+    justify-content: center;
+    color: var(--ta-subtle);
+    font-size: 0.8rem;
+}
+
+/* ─── Account cell (avatar + name + sub) ────────────────────────────────── */
+.tsbd-acct-cell {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+.tsbd-acct-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--ta-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+.tsbd-acct-avatar.is-momo  { background: linear-gradient(135deg, #a50064, #d4006a); }
+.tsbd-acct-avatar.is-vcb   { background: linear-gradient(135deg, #007b5e, #009b6e); }
+.tsbd-acct-avatar.is-tcb   { background: linear-gradient(135deg, #cc0000, #ee2222); }
+.tsbd-acct-avatar.is-vtb   { background: linear-gradient(135deg, #003087, #1a4db8); }
+.tsbd-acct-avatar.is-acb   { background: linear-gradient(135deg, #0055a5, #1a6ac4); }
+.tsbd-acct-avatar.is-agr   { background: linear-gradient(135deg, #c8102e, #e62040); }
+.tsbd-acct-info { min-width: 0; }
+.tsbd-acct-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ta-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+.tsbd-acct-sub {
+    font-size: 0.72rem;
+    color: var(--ta-subtle);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+/* ─── Badges ────────────────────────────────────────────────────────────── */
+.tsbd-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 99px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+.tsbd-badge-bank { background: rgba(91,140,213,.12); color: #2a5caa; }
+.tsbd-badge-momo { background: rgba(165,0,100,.10); color: #a50064; }
+.tsbd-badge-tpl  { background: rgba(124,144,112,.12); color: #4a6a40; text-transform: capitalize; }
+
+/* ─── Shortcode cell ────────────────────────────────────────────────────── */
+.tsbd-sc-cell {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+}
+.tsbd-sc-code {
+    background: var(--ta-bg);
+    border: 1px solid var(--ta-border2);
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 0.72rem;
+    color: var(--ta-text);
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    display: block;
+}
+.tsbd-sc-copy {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1px solid var(--ta-border2);
+    background: var(--ta-card);
+    color: var(--ta-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.tsbd-sc-copy:hover { background: var(--ta-primary); color: #fff; border-color: var(--ta-primary); }
+
+/* Account ID code cell */
+.tsbd-id-code {
+    background: var(--ta-bg);
+    border: 1px solid var(--ta-border2);
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 0.70rem;
+    color: var(--ta-muted);
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    display: block;
+}
+
+/* ─── Status badges ─────────────────────────────────────────────────────── */
+.tsbd-status-active, .tsbd-status-inactive {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 99px;
+}
+.tsbd-status-active   { background: rgba(124,144,112,.12); color: #4a6a40; }
+.tsbd-status-inactive { background: rgba(212,132,94,.10);  color: #9a4a24; }
+
+/* ─── Action buttons ─────────────────────────────────────────────────────── */
+.tsbd-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+}
+.tsbd-action-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid var(--ta-border2);
+    background: var(--ta-card);
+    color: var(--ta-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+    flex-shrink: 0;
+}
+.tsbd-action-btn:hover, .tsbd-action-btn.is-edit:hover { background: var(--ta-primary); color: #fff; border-color: var(--ta-primary); }
+.tsbd-action-btn.is-regen:hover { background: var(--ta-accent); color: #fff; border-color: var(--ta-accent); }
+.tsbd-action-btn.is-delete:hover { background: #D4845E; color: #fff; border-color: #D4845E; }
+
+/* ─── Shortcode hint below table ─────────────────────────────────────────── */
+.tsbd-shortcode-hint {
+    background: var(--ta-bg);
+    border: 1px solid var(--ta-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 0.80rem;
+    color: var(--ta-muted);
+    line-height: 1.9;
+}
+.tsbd-shortcode-hint h3 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--ta-text);
+}
+.tsbd-shortcode-hint code {
+    background: var(--ta-card);
+    border: 1px solid var(--ta-border2);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.78rem;
+    color: var(--ta-primary);
+    font-family: 'Courier New', monospace;
+}
+

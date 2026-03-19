@@ -1,0 +1,18 @@
+/* TS Bank Donate — Modern Card Template
+   Layout: Vertical stack from base CSS.
+   This template is the default — minimal overrides needed.
+*/
+
+/* Large QR image */
+.tsbd-template-modern .tsbd-qr-img {
+    width: 200px;
+}
+
+/* Underline tab style */
+.tsbd-template-modern .tsbd-tab {
+    border-radius: 0;
+}
+.tsbd-template-modern .tsbd-tab.is-active {
+    background: transparent;
+    box-shadow: none;
+}

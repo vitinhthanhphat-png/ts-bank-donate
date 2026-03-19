@@ -1,0 +1,79 @@
+/* TS Bank Donate — Glassmorphism Template
+   Layout: Same vertical stack as Modern (base CSS handles layout).
+   This template adds gradient background + frosted glass visual overrides.
+*/
+
+/* Gradient background on the panel wrapper (set by shortcode as tsbd-template-glass class) */
+.tsbd-template-glass {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* White text for content on dark background */
+.tsbd-template-glass .tsbd-panel-content {
+    background: transparent;
+}
+
+/* Bank avatar: frosted */
+.tsbd-template-glass .tsbd-bank-avatar {
+    background: rgba(255,255,255,0.25);
+    border: 1.5px solid rgba(255,255,255,0.45);
+    color: #fff;
+}
+.tsbd-template-glass .tsbd-bank-name {
+    color: #fff;
+    font-weight: 700;
+}
+.tsbd-template-glass .tsbd-bank-sub {
+    color: rgba(255,255,255,0.75);
+}
+
+/* QR card: frosted glass card */
+.tsbd-template-glass .tsbd-qr-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px) saturate(1.6);
+    -webkit-backdrop-filter: blur(12px) saturate(1.6);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+.tsbd-template-glass .tsbd-qr-hint {
+    color: rgba(255,255,255,0.75);
+}
+
+/* Info rows: frosted card */
+.tsbd-template-glass .tsbd-info-row {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.tsbd-template-glass .tsbd-info-label {
+    color: rgba(255,255,255,0.7);
+}
+.tsbd-template-glass .tsbd-info-value {
+    color: #fff;
+}
+.tsbd-template-glass .tsbd-info-action {
+    background: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+}
+.tsbd-template-glass .tsbd-info-action:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+/* CTA: frosted button */
+.tsbd-template-glass .tsbd-copy-btn {
+    background: rgba(255,255,255,0.25);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: #fff;
+    box-shadow: none;
+    backdrop-filter: blur(4px);
+}
+.tsbd-template-glass .tsbd-copy-btn:hover {
+    background: rgba(255,255,255,0.4);
+    opacity: 1;
+}
+.tsbd-template-glass .tsbd-momo-open-btn {
+    background: rgba(165,0,100,0.7);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    box-shadow: none;
+}
