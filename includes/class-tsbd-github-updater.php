@@ -54,6 +54,11 @@ class TSBD_GitHub_Updater {
 	 * @return object|false Release data or false on failure.
 	 */
 	private function fetch_release() {
+		// Clear cache if user clicks "Check Again" in Dashboard > Updates
+		if ( isset( $_GET['force-check'] ) && '1' === $_GET['force-check'] ) {
+			delete_transient( $this->cache_key );
+		}
+
 		$cached = get_transient( $this->cache_key );
 		if ( false !== $cached ) {
 			return $cached;

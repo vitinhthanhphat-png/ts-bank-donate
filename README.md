@@ -110,6 +110,9 @@ ts_bank_donate/
 
 ## 📝 Changelog
 
+### v1.3.5
+- ✅ Fix lỗi cập nhật OTA: Cho phép xoá bộ nhớ đệm (cache) khi người dùng bấm nút "Check Again" (Kiểm tra lại) trong trang `Bảng tin > Cập nhật` của WordPress, giúp nhận diện tính năng mới tức thì.
+
 ### v1.3.4
 - ✅ Fix lỗi nghiêm trọng: Không lưu được hình ảnh mã QR MoMo khi "Thêm/Sửa Tài khoản" trong Admin.
 
