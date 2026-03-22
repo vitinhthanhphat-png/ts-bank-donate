@@ -210,8 +210,9 @@
             // VietQR template — radio inputs hidden via CSS but checked state valid
             formData.vietqr_template = $('#tsbd-bank-fields input[name="vietqr_template"]:checked').val() || 'compact2';
         } else {
-            formData.phone        = $('#tsbd_phone').val().trim();
-            formData.account_name = $('#tsbd_momo_name').val().trim();
+            formData.phone          = $('#tsbd_phone').val().trim();
+            formData.account_name   = $('#tsbd_momo_name').val().trim();
+            formData.momo_qr_custom = $('#tsbd_momo_qr_custom').val();
         }
 
         $.post(ajax, {

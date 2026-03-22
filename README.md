@@ -110,6 +110,9 @@ ts_bank_donate/
 
 ## 📝 Changelog
 
+### v1.3.4
+- ✅ Fix lỗi nghiêm trọng: Không lưu được hình ảnh mã QR MoMo khi "Thêm/Sửa Tài khoản" trong Admin.
+
 ### v1.3.3
 - ✅ Fix lỗi UI vỡ layout góc bo tròn trên trình duyệt Safari (iOS/Mac)
 - ✅ Cập nhật tài liệu marketing (chiến dịch giới thiệu plugin)
