@@ -420,9 +420,7 @@ $badge_initials = $type === 'momo' ? 'M'
                                         </div>
                                         <?php endif; ?>
                                     </div>
-                                    <button type="button" class="tsbd-copy-btn">
-                                        ♡ <?php echo $type === 'momo' ? 'Mở ứng dụng MoMo' : 'Mở app ngân hàng để CK'; ?>
-                                    </button>
+
                                 </div>
                             </div>
                         </div>

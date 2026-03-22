@@ -110,6 +110,10 @@ ts_bank_donate/
 
 ## 📝 Changelog
 
+### v1.3.3
+- ✅ Fix lỗi UI vỡ layout góc bo tròn trên trình duyệt Safari (iOS/Mac)
+- ✅ Cập nhật tài liệu marketing (chiến dịch giới thiệu plugin)
+
 ### v1.3.2
 - ✅ Sử dụng `git archive` để đóng gói release ZIP, fix lỗi "Plugin file does not exist" khi upload lên host Linux
 - ✅ Tối ưu hoá OTA Updater

@@ -3,7 +3,7 @@
  * Plugin Name: TS Bank Donate
  * Plugin URI:  https://techshare.vn
  * Description: Hiển thị hộp donate với QR chuyển khoản ngân hàng (VietQR) và MoMo. Quản lý nhiều tài khoản, tự sinh ảnh QR lưu vào Media Library.
- * Version:     1.3.2
+ * Version:     1.3.3
  * Author:      TechShare VN
  * Author URI:  https://techshare.vn
  * License:     GPL-2.0-or-later
@@ -14,7 +14,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Constants
-define( 'TSBD_VERSION',   '1.3.2' );
+define( 'TSBD_VERSION',   '1.3.3' );
 define( 'TSBD_FILE',      __FILE__ );
 define( 'TSBD_DIR',       plugin_dir_path( __FILE__ ) );
 define( 'TSBD_URL',       plugin_dir_url( __FILE__ ) );

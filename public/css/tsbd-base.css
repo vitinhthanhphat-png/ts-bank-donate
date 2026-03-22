@@ -40,6 +40,9 @@
     overflow: hidden;
     box-shadow: var(--tsbd-shadow-lg);
     border: 1px solid var(--tsbd-border);
+    transform: translateZ(0); /* Safari corner fix */
+    -webkit-transform: translateZ(0);
+    isolation: isolate;
 }
 
 /* ─── Header ────────────────────────────────────────────────────────────── */
@@ -49,6 +52,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-radius: calc(var(--tsbd-radius) - 1px) calc(var(--tsbd-radius) - 1px) 0 0;
 }
 .tsbd-header::before {
     content: '';
